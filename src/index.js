@@ -23,11 +23,11 @@ function onCountrySearch() {
         if(countries.length > 10){
             Notiflix.Notify.info('Too many matches found. Please enter a more specific name.');
         } else if(countries.length === 1) {
-            createCountryListMarkup.innerHTML = ' ';
             countryInfo.innerHTML = createCountryMarkup(countries);
+            createCountryListMarkup.innerHTML = '';
         } else {
             countryList.innerHTML = createCountryListMarkup(countries);
-            createCountryMarkup.innerHTML = ' ';
+            createCountryMarkup.innerHTML = '';
         }
     })
     .catch(error => console.log(error));
@@ -45,10 +45,10 @@ function createCountryListMarkup(arr) {
 function createCountryMarkup(arr) {
     return arr
     .map(({name: {official}, capital, population, flags: {svg}, languages}) => 
-    `<div><img src="${svg}" alt="${official} width = 100px"><h2>${official}</h2></div>
-    <p><b>Capital:</b> ${capital}</p>
+    `<div class="country-card"><img width="500" height="300" src="${svg}" alt="${official}"><h2>${official}</h2>
     <p><b>Population:</b> ${population}</p>
     <p><b>Language:</b> ${Object.values(languages)}</p>
+    <p><b>Capital:</b> ${capital}</p></div>
     `).join('')
 }
 
