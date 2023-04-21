@@ -24,10 +24,10 @@ function onCountrySearch() {
             Notiflix.Notify.info('Too many matches found. Please enter a more specific name.');
         } else if(countries.length === 1) {
             countryInfo.innerHTML = createCountryMarkup(countries);
-            createCountryListMarkup.innerHTML = '';
+            countryList.innerHTML = '';
         } else {
             countryList.innerHTML = createCountryListMarkup(countries);
-            createCountryMarkup.innerHTML = '';
+            countryInfo.innerHTML = '';
         }
     })
     .catch(error => console.log(error));
@@ -53,6 +53,6 @@ function createCountryMarkup(arr) {
 }
 
 function clearInput() {
-    createCountryListMarkup.innerHTML = '';
-    createCountryMarkup.innerHTML = '';
+    countryInfo.innerHTML = '';
+    countryList.innerHTML = '';
 }
